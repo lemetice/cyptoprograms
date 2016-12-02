@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <process.h>
+#include <string.h>
 
 using namespace std;
 
@@ -117,4 +118,39 @@ void rsa(){
 /*RailFence Algorithm*/
 void railFence(){
     cout<<"Welcome to RailFence Cipher Algorithm\n";
+    int i,j,k;
+    char pt[20], ct[20],dt[20];
+    
+    cout<<"Enter plain text:\n";
+    cin>>pt;
+    int l = strlen(pt);
+    
+    /*Ciphering*/
+    for(i=0,j=0;j<l;i++){
+        if(i%2==0) ct[j++]= pt[i];
+    }
+    for(i=0;i<l;i++){
+        if(i%2==1) ct[j+2]= pt[i];
+    }
+    
+    ct[j]='\0';
+    cout<<"\n Cipher text is:\n"<<ct;
+    
+    /*Deciphering*/
+    if(l%2==0){
+        k =l/2;
+    }else{
+        k=(l/2)+1;
+    }
+    for(i=0,j=0;i<k;i++){
+        dt[j] = ct[i];
+        j=j+2;
+    }
+    for(i=k,j=1;i<l;i++){
+        dt[j]=ct[i];
+        j=j+2;
+    }
+    dt[l]='\0';
+    cout<<"\n Decrypted text :\n"<<dt;
+    
 }
