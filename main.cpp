@@ -62,6 +62,7 @@ int main(int argc, char** argv) {
                 autokeyCipher();
                 break;                 
             case 7:
+                cout<<"\n\t (^_^) Goodbye (^_^)\n";
                 exit(0);
             default:
                 cout<<"Wrong choice!. Select from the list above"<<endl;
@@ -220,10 +221,10 @@ void autokeyCipher(){
         }
     }
     
-    cout<<"Encrypted text:";
+    cout<<"\nEncrypted text:\n";
     for(i=0;i<strlen(pt);i++){
         c[i]=pt[i]+k[i];
         cout<<char(((((c[i]-97)+3)-100)%26)+97);
     }
-    
+    cout<<"\n\n";
 }
