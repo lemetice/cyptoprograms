@@ -19,6 +19,7 @@ int Eucli(long a, long b);
 int ExtdEucli(long a, long b);
 void rsa();
 void railFence();
+void ceaserCipher();
 
 int main(int argc, char** argv) {
     
@@ -31,30 +32,33 @@ int main(int argc, char** argv) {
         cout<<"\n 2. To find GCD and MI using Extended Euclidean Algorithm";
         cout<<"\n 3. To run RSA Algorithm";
         cout<<"\n 4. To run RailFence Algorithm";
-        cout<<"\n 5. To Exit(^_^) \n";
+        cout<<"\n 5. To run Ceaser Cipher Algorithm";
+        cout<<"\n 6. To Exit(^_^) \n";
         cin>>ch;
         
         switch(ch){
             case 1:
                 cout<<"Enter two numbers"<<endl;
                 cin>>a>>b;
-                Eucli(a,b);
-                break;
-            
+                 Eucli(a,b);                
+                break;            
             case 2:
                 cout<<"Enter two numbers"<<endl;
                 cin>>a>>b;
                // ExtdEucli(a,b);
-                break;
-                
+                break;                
             case 3:  
                 rsa();
                 break;
             case 4:
                 railFence();
                 break;
-                
+            
             case 5:
+                   ceaserCipher();
+                   break;
+                   
+            case 6:
                 exit(0);
             default:
                 cout<<"Wrong choice!. Select from the list above"<<endl;
@@ -153,4 +157,32 @@ void railFence(){
     dt[l]='\0';
     cout<<"\n Decrypted text :\n"<<dt;
     
+}
+
+/*Ceaser Cipher Algorithm*/
+void ceaserCipher(){
+    
+    cout<<"Welcome to Ceaser cipher Encryption\n\n";
+    char pt[100], c[100],ct[100];
+    int i=0,k;
+    
+    cout<<"Enter the key (must be an integer):\n"<<endl;
+    cin>>k;
+    cout<<"Enter the Plain text:"<<endl;
+    cin>>pt;
+    
+    /*Ciphering*/
+    for(i=0;pt[i]!='\0';i++){
+        c[i]= (pt[i]-'a'+k)%26+'a';
+        //cout<<c[i];
+        ct[i]=c[i];
+    }
+    cout<<"\nCipher text:\n"<<ct;
+    
+    /*Deciphering*/
+    for(i=0;ct[i]!='\0';i++){
+        pt[i]= 'z'-('z'+k-c[i]);
+        //cout<<pt[i];
+    }
+    cout<<"\nPlaintext:"<<pt<<endl;
 }
