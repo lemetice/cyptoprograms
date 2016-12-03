@@ -20,6 +20,7 @@ int ExtdEucli(long a, long b);
 void rsa();
 void railFence();
 void ceaserCipher();
+void autokeyCipher();
 
 int main(int argc, char** argv) {
     
@@ -33,7 +34,8 @@ int main(int argc, char** argv) {
         cout<<"\n 3. To run RSA Algorithm";
         cout<<"\n 4. To run RailFence Algorithm";
         cout<<"\n 5. To run Ceaser Cipher Algorithm";
-        cout<<"\n 6. To Exit(^_^) \n";
+        cout<<"\n 6. To run Autokey Cipher Algorithm";
+        cout<<"\n 7. To Exit(^_^) \n";
         cin>>ch;
         
         switch(ch){
@@ -52,13 +54,14 @@ int main(int argc, char** argv) {
                 break;
             case 4:
                 railFence();
-                break;
-            
+                break;            
             case 5:
-                   ceaserCipher();
-                   break;
-                   
+                ceaserCipher();
+                break;             
             case 6:
+                autokeyCipher();
+                break;                 
+            case 7:
                 exit(0);
             default:
                 cout<<"Wrong choice!. Select from the list above"<<endl;
@@ -195,4 +198,32 @@ void ceaserCipher(){
         //cout<<pt[i];
     }
     cout<<"\nPlaintext:"<<pt<<endl;
+}
+
+/*Autokey Cipher Algorithm*/
+void autokeyCipher(){
+    cout<<"Welcome to Autokey Cipher\n";
+    int i,j,c[10],lp, lk;
+    char pt[10],k[10];
+    
+    cout<<"Enter Plaintext:\n";
+    cin>>pt;
+    cout<<"Enter the key:\n";
+    cin>>k;
+    lk=strlen(k);
+    
+    if(strlen(k)<strlen(pt)){
+        lk--;
+        for(i=0;i<strlen(pt);i++){
+            k[i+lk+1] = pt[i];
+            cout<<k[i];
+        }
+    }
+    
+    cout<<"Encrypted text:";
+    for(i=0;i<strlen(pt);i++){
+        c[i]=pt[i]+k[i];
+        cout<<char(((((c[i]-97)+3)-100)%26)+97);
+    }
+    
 }
