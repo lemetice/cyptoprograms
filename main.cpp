@@ -126,11 +126,11 @@ void railFence(){
     int l = strlen(pt);
     
     /*Ciphering*/
-    for(i=0,j=0;j<l;i++){
+    for(i=0,j=0;i<l;i++){
         if(i%2==0) ct[j++]= pt[i];
     }
     for(i=0;i<l;i++){
-        if(i%2==1) ct[j+2]= pt[i];
+        if(i%2==1) ct[j++]= pt[i];
     }
     
     ct[j]='\0';
