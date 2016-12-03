@@ -171,8 +171,18 @@ void ceaserCipher(){
     cout<<"Enter the Plain text:"<<endl;
     cin>>pt;
     
+    /*Normal Ciphering*/
+    for(i=0;i<=strlen(pt);i++){
+        if(isalpha(pt[i])){
+            pt[i]=toupper(pt[i]);//use upper to keep from having to use two seperate for A..Z a..z
+            ct[i]=(((pt[i]-65)+13)%26)+65;
+        }
+    }
+    cout<<"\nCiphertext(Without Key):\n"<<ct;
+    
     /*Ciphering*/
     for(i=0;pt[i]!='\0';i++){
+        
         c[i]= (pt[i]-'a'+k)%26+'a';
         //cout<<c[i];
         ct[i]=c[i];
